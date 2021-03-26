@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cette application permet d'accéder à une liste d'utilisateurs (User) et leurs publications (Post).
 
-Things you may want to cover:
+L'exercice consiste à ajouter la possibilité de commenter une publication.
 
-* Ruby version
+Ce qui est attendu :
 
-* System dependencies
+* Créer le modèle de commentaire, Comment, et ses relations
 
-* Configuration
+* Revoir la modélisation du Like pour qu'il soit possible de liker le commentaire et la publication sans ajouter de nouveau modèle 
 
-* Database creation
+* Ajouter une API permettant d'ajouter un commentaire à une publication
+ 
+* Ajouter une API retournant les commentaires d'une publication
 
-* Database initialization
+* Ajouter une API permettant de liker un commentaire
 
-* How to run the test suite
+* Dans la sérialisation d'un commentaire, ajouter une variable permettant de savoir si l'utilisateur qui requête la donnée a liké ou non le commentaire
 
-* Services (job queues, cache servers, search engines, etc.)
+* Dans la sérialisation d'un commentaire, ne pas retourner la liste des likes mais le total de likes du commentaire (un plus est de ne pas avoir à recalculer le total de likes à chaque requête) 
 
-* Deployment instructions
-
-* ...
+Un plus sera de proposer un design pattern pour gérer les controllers (et ce même si le code des controllers reste simple, l'idée est de se projeter dans une implémentation)
