@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @post.comments.new(comment_params.merge(user: current_user))
+    @comment = @post.comments.create(comment_params.merge(user: current_user))
     render json: @comment, serializer: Api::CommentSerializer
   end
 
