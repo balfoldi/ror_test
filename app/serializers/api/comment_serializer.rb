@@ -3,9 +3,17 @@ module Api
 
     attributes :id
     attributes :content
+    attributes :liked
+    attributes :likes_count
     belongs_to :user
     belongs_to :post
-    has_many :likes
 
+    def liked
+      object.likes.where(user: scope).exists?
+    end
+
+    def likes_count
+      object.likes.count
+    end
   end
 end
