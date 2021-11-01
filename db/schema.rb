@@ -47,8 +47,19 @@ ActiveRecord::Schema.define(version: 2021_11_01_113241) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users_liked_posts_join_table", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_users_liked_posts_join_table_on_post_id"
+    t.index ["user_id"], name: "index_users_liked_posts_join_table_on_user_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "users_liked_posts_join_table", "posts"
+  add_foreign_key "users_liked_posts_join_table", "users"
 end
