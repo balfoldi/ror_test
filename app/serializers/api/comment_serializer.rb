@@ -11,9 +11,5 @@ module Api
     def liked
       object.likes.where(user: scope).exists?
     end
-
-    def likes_count
-      object.likes.count
-    end
   end
 end
