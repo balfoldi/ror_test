@@ -2,5 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
   has_many :likes, as: :liked
-  validates :content, presence: true
+  MINIMUM_CONTENT_LENGTH = 3
+  MAXIMUM_CONTENT_LENGTH = 50
+  validates :content, presence: true, length: { in: MINIMUM_CONTENT_LENGTH..MAXIMUM_CONTENT_LENGTH }
 end
