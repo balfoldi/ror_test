@@ -5,4 +5,8 @@ class Comment < ApplicationRecord
   MINIMUM_CONTENT_LENGTH = 3
   MAXIMUM_CONTENT_LENGTH = 50
   validates :content, presence: true, length: { in: MINIMUM_CONTENT_LENGTH..MAXIMUM_CONTENT_LENGTH }
+
+  def update_likes_count
+    self.update(likes_count: self.likes.size)
+  end
 end
