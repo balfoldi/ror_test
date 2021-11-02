@@ -1,6 +1,6 @@
-class PostsController < ActionController::API
+class PostsController < ApplicationController
   def index
     posts = Post.all
-    render json: posts, each_serializer: Api::PostSerializer
+    render build_objects(posts)
   end
 end

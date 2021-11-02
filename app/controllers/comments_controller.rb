@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.where(post: @post)
-    render json: @comments, each_serializer: Api::CommentSerializer
+    render build_objects(@comments)
   end
 
   def create
     @comment = @post.comments.create(comment_params.merge(user: current_user))
-    render json: @comment, serializer: Api::CommentSerializer
+    render build_object_error_managed(@comment)
   end
 
   private

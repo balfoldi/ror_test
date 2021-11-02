@@ -8,6 +8,7 @@ RSpec.describe CommentsController, type: :controller do
     let(:comment) { FactoryBot.create(:comment, post: post, user: user_logged) }
     let!(:comment_liked) { FactoryBot.create(:comment, post: post, user: user_logged) }
     let!(:like) { FactoryBot.create(:like, user: user_logged, liked: comment_liked) }
+
     subject { get :index, params: { post_id: comment.post.id } }
 
     it { is_expected.to have_http_status(:success) }
@@ -31,11 +32,22 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "GET #create" do
     let(:post_commentable) { FactoryBot.create(:post) }
-    subject { post :create, params: { post_id: post_commentable.id, comment: { content: Faker::Lorem.characters(number: 10) } } }
 
-    it { is_expected.to have_http_status(:success) }
-    it { expect { subject }.to change { post_commentable.comments.count } }
-    it { expect(JSON.parse(subject.body)).to include "id", "post", "user", "likes_count", "content", "liked" }
+    context "valid data" do
+      subject { post :create, params: { post_id: post_commentable.id, comment: { content: Faker::Lorem.characters(number: 10) } } }
+
+      it { is_expected.to have_http_status(:success) }
+      it { expect { subject }.to change { post_commentable.comments.count } }
+      it { expect(JSON.parse(subject.body)).to include "id", "post", "user", "likes_count", "content", "liked" }
+    end
+
+    context "invalid data" do
+      subject { post :create, params: { post_id: post_commentable.id, comment: { content: Faker::Lorem.characters(number: Comment::MINIMUM_CONTENT_LENGTH - 1) } } }
+
+      it { is_expected.to have_http_status(:bad_request) }
+      it { expect { subject }.to_not change { post_commentable.comments.count } }
+      it { expect(JSON.parse(subject.body)).to include "errors" }
+    end
   end
 
 end
