@@ -1,6 +1,6 @@
-class UsersController < ActionController::API
+class UsersController < ApplicationController
   def index
     users = User.all
-    render json: users, each_serializer: Api::UserSerializer
+    render build_objects(users)
   end
 end

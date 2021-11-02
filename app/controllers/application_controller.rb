@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
- serialization_scope :current_user
+  serialization_scope :current_user
+  include ApiJson
 
   def require_current_user
     if current_user

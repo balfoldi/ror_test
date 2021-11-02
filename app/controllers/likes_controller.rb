@@ -3,7 +3,7 @@ class LikesController < ApplicationController
 
   def create
     @like = @liked.likes.create(user: current_user, liked: @liked)
-    render json: @like, serializer: Api::LikeSerializer
+    render build_object_error_managed(@like)
   end
 
   private
