@@ -14,7 +14,7 @@ Ce qui est attendu :
 
 
 * Revoir la modélisation du Like pour qu'il soit possible de liker le commentaire et la publication sans ajouter de nouveau modèle
-  * La relation `like`-`post` a été remplacé par une relation plymorphique `liked` permetant de liker un `post` ou un `comment`.
+  * La relation `like`-`post` a été remplacée par une relation plymorphique `liked` permetant de liker un `post` ou un `comment`.
 
 ---
 
