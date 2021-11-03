@@ -61,4 +61,4 @@ Ce qui est attendu :
 ---
 
 Un plus sera de proposer un design pattern pour gérer les controllers (et ce même si le code des controllers reste simple, l'idée est de se projeter dans une implémentation)
-  * Un attribut `likes_count` a été rajouté afin de stoquer en base de donnée le nombre de like sans avoir à le recalculer à chaques requêtes. Il est mis à joure à l'aide de `callbacks` dans le modèle `Like`.
+  * Le service `ApiJson` a été créé afin de permettre un `syntactic sugar` ainsi qu'une prise en charge des erreurs de modèle au niveau des controlleurs et donc de l'API.
