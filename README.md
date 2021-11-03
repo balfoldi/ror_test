@@ -56,9 +56,9 @@ Ce qui est attendu :
 ---
 
 * Dans la sérialisation d'un commentaire, ne pas retourner la liste des likes mais le total de likes du commentaire (un plus est de ne pas avoir à recalculer le total de likes à chaque requête)
-  * Un attribut `likes_count` a été rajouté afin de stoquer en base de donner le nombre de like sans avoir à le recalculer à chaques requêtes. Il est mis à joure à l'aide de `callbacks` dans le modèle `Like`.
+  * Un attribut `likes_count` a été rajouté afin de stoquer en base de donnée le nombre de like sans avoir à le recalculer à chaques requêtes. Il est mis à joure à l'aide de `callbacks` dans le modèle `Like`.
 
 ---
 
 Un plus sera de proposer un design pattern pour gérer les controllers (et ce même si le code des controllers reste simple, l'idée est de se projeter dans une implémentation)
-  * Un attribut `likes_count` a été rajouté afin de stoquer en base de donner le nombre de like sans avoir à le recalculer à chaques requêtes. Il est mis à joure à l'aide de `callbacks` dans le modèle `Like`.
+  * Le service `ApiJson` a été créé afin de permettre un `syntactic sugar` ainsi qu'une prise en charge des erreurs de modèle au niveau des controlleurs et donc de l'API.
