@@ -12,6 +12,6 @@ module ApiJson
   def build_object_error_managed(object)
     return build_object(object) if object.errors.empty?
 
-    {json: { errors: object.errors.full_messages }, status: :bad_request}
+    { json: { errors: object.errors.full_messages }, status: :bad_request }
   end
 end
