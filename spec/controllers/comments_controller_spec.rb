@@ -19,7 +19,7 @@ RSpec.describe CommentsController, type: :controller do
       expect(comment_liked_attributes["liked"]).to be true
     end
 
-    it "liked key return true if user_logged like" do
+    it "liked key return false if user_logged did not like" do
       comment_attributes = JSON.parse(subject.body).find { |comment_attributes| comment_attributes["id"] == comment.id }
       expect(comment_attributes["liked"]).to be false
     end
